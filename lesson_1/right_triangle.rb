@@ -1,56 +1,49 @@
-# encoding: UTF-8
-=begin
-Баев Петр
-Задание 1 - Прямоугольный треугольник
-=end
+# frosen_string_literal:true
+# encoding: ascii-8bit
 
-=begin
-исключаем ввод пользователем букв или букв+числа, либо пустое
-=end
+# Baev Peter
+# Task 1 - Right triangle
+# valid Rubocop
+
+# We exclude the user entering letters or letters + numbers, or empty
+# please enter correctly that is, a number or number with a floating point
+
 def insert_user(index)
-  begin
-    puts "Введите длину стороны #{index}"
-
-    d = Float(gets.chomp).to_f 
-    return d
-  rescue
-  # выводим ошибку и просим ввести корректно то есть число или число с плавающей точкой
-    puts "Введите число или число с плавающей точкой!"
+  puts "Введите длину стороны #{index.to_i + 1}"
+  Float(gets.chomp)
+rescue StandardError
+  puts 'Введите число или число с плавающей точкой!'
   retry
-  end
 end
 
-# a - первое ввел, b - второе ввел, с - третье ввел
+# insert a, insert b, insert c
+
 data = []
-
 3.times do |i|
-   data << insert_user(i+1)
+  data << insert_user(i)
 end
 
-=begin
- map принимает перечислемые объекты и запускает блок для каждого объекта и возвращает
- ВАЖНО!!! Исходный объект не изменяется если не использовать map! (c восклицательным знаком)
-=end
-  
-data.map! {|n| n * n}
+# map takes listable objects and starts a block for each object and returns
+# IMPORTANT!!! The original object does not change unless you use map!
 
-# Находим самую длинную сторону - гипотенуза 
-#сортировка по возрастанию последний элемент это и есть гипотенуза 
+data.map! { |n| n * n }
+
+# Find the longest side - hypotenuse
+# sorting in ascending order the last element is the hypotenuse
+# second option
+# h = data.max
+# c1, c2 = data.min(2)
+
 data.sort!
 
 if data[0] == data[1] && data[1] == data[2]
-  puts "Треугольник равносторонний"
+  puts 'Треугольник равносторонний'
 elsif data[0] == data[1] || data[1] == data[2] || data[2] == data[0]
-  puts "Треугольник равнобедренный"  
+  puts 'Треугольник равнобедренный'
 end
-
 
 if data[0] + data[1] == data[2]
-  puts "Ваш треугольник прямоугольный!"
+  puts 'Ваш треугольник прямоугольный!'
 else
-  puts "Ваш треугольник не прямоугольный"
+  puts 'Ваш треугольник не прямоугольный'
 end
-
-
-
-

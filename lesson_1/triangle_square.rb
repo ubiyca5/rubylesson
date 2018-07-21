@@ -1,30 +1,27 @@
-# encoding: UTF-8
-=begin
-Баев Петр
-Задание 1 - Площадь треугольника
-=end
+# frosen_string_literal:true
+# encoding: ascii-8bit
 
-=begin
-исключаем ввод пользователем букв или букв+числа, либо пустое
-=end
+# Baev Peter
+# Task 1 - Area of a triangle
+# valid Rubocop
+
+# We exclude the user entering letters or letters + numbers, or empty
+# please enter correctly that is, a number or number with a floating point
+# change message insert 1 or 2
+
 def insert_user(index)
-  begin
-    if index == 1
-       puts "Введите длину основания"
-    else
-       puts "Введите высоту"
-    end
-
-    d = Float(gets.chomp).to_f 
-    return d
-  rescue
-  # выводим ошибку и просим ввести корректно то есть число или число с плавающей точкой
-    puts "Введите число или число с плавающей точкой!"
-  retry
+  if index.to_i == 1
+    puts 'Введите длину основания'
+  else
+    puts 'Введите высоту'
   end
+  Float(gets.chomp)
+rescue StandardError
+  puts 'Введите число или число с плавающей точкой!'
+  retry
 end
 
-puts "Программа вычисляет площадь треугольника!"
+puts 'Программа вычисляет площадь треугольника!'
 
 a = insert_user(1)
 h = insert_user(2)
